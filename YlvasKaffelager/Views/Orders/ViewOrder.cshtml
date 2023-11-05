@@ -1,0 +1,35 @@
+﻿@model YlvasKaffelager.ViewModels.ViewOrderModel
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Produkt</th>
+      <th scope="col">Antal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>@Model.Brand</td>
+      <td>@Model.Amount</td>
+    </tr>
+  </tbody>
+    <thead>
+    <tr>
+      <th scope="col">Total</th>
+      <th scope="col">@Model.Total</th>
+    </tr>
+  </thead>
+</table>
+
+<form asp-action="ConfirmOrder" asp-controller="Orders" method="post">
+
+<input type="hidden" value="@Model.FirstName" asp-for="FirstName"/>
+<input type="hidden" value="@Model.LastName" asp-for="LastName"/>
+<input type="hidden" value="@Model.Email" asp-for="Email"/>
+<input type="hidden" value="@Model.Brand" asp-for="Brand"/>
+<input type="hidden" value="@Model.Amount" asp-for="Amount"/>
+<input type="hidden" value="@Model.Total" asp-for="Total"/>
+
+<input type="submit" class="btn btn-secondary" value="Slutför beställning" />
+</form>
+

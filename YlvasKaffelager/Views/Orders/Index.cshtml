@@ -1,0 +1,39 @@
+﻿@model YlvasKaffelager.ViewModels.OrderViewModel
+
+<div class="text-center">
+    <h1 class="display-4">Beställ</h1>
+     <h1 class="display-6">Vi ser fram emot din order.</h1>
+</div>
+
+<form asp-action="CreateOrder" asp-controller="Orders" method="post">  
+  
+    <div class="row">
+
+        <div class="col-md-6">          
+            <label>Förnamn:</label>
+            <input class="form-control" type="text" asp-for="FirstName" required="required" />
+                
+            <label>Efternamn</label>
+            <input class="form-control" type="text" asp-for="LastName" required="required"/>
+               
+            <label>E-post</label>
+            <input class="form-control" type="email" asp-for="Email" required="required"/>
+
+            <label>Produkt</label>
+            <select class="form-control" asp-for="CoffeeId" asp-items="@(new SelectList(Model.CoffeeItems, "Value", "Text"))" required="required">  
+                <option value="">---Välj---</option>   
+            </select>
+                
+            <label>Antal</label>
+            <input class="form-control" type="number" asp-for="Amount" required="required"  min="1" />
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mt-1">      
+                <input type="submit" name="btnSubmit" value="Beställ" class="btn btn-success" />  
+            </div>
+        </div>
+
+    </div>  
+  
+</form>
